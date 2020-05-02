@@ -1,4 +1,4 @@
-package com.customerContext.domain.customer;
+package com.customerContext.domain.customer.events;
 
 import lombok.Getter;
 

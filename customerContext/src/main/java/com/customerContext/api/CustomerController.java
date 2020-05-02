@@ -1,9 +1,9 @@
 package com.customerContext.api;
 
 
+import com.customerContext.application.dtos.CreateCustomerRequestDto;
 import com.customerContext.application.dtos.CreateCustomerResponseDto;
 import com.customerContext.application.services.CustomerApplicationService;
-import com.customerContext.application.dtos.CreateCustomerRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

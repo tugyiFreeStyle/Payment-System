@@ -21,6 +21,8 @@ public class PaymentGatewayApplication {
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 
+//circuit breaker implementation.
+// euroka integration
 
 		return builder.routes()
 				.route(p -> p
@@ -33,6 +35,8 @@ public class PaymentGatewayApplication {
 						.uri("http://localhost:8080"))
 
 				.build();
+
+		// 10 service
 	}
 
 }

@@ -1,14 +1,13 @@
 package com.customerContext.application.services;
 
 
-import com.customerContext.application.dtos.CreateCustomerResponseDto;
+import com.customerContext.application.assembler.CustomerAssembler;
 import com.customerContext.application.dtos.CreateCustomerRequestDto;
+import com.customerContext.application.dtos.CreateCustomerResponseDto;
 import com.customerContext.domain.customer.*;
 import com.customerContext.infrastructure.eventBus.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.stream.Collectors;
 
 
 @Service
@@ -16,17 +15,20 @@ public class CustomerApplicationServiceImpl implements CustomerApplicationServic
 
     private final CustomerRepository customerRepository;
     private final CustomerPolicy customerPolicy;
+
     private final EventBus eventBus; //function
     //depend on a function instead of interface
 
-
+    private final CustomerAssembler customerAssembler;
     @Autowired
     public CustomerApplicationServiceImpl(CustomerRepository customerRepository,
                                           CustomerPolicy customerPolicy,
-                                          EventBus eventBus) {
+                                          EventBus eventBus,
+                                          CustomerAssembler customerAssembler) {
         this.customerRepository = customerRepository;
         this.customerPolicy = customerPolicy;
         this.eventBus = eventBus;
+        this.customerAssembler = customerAssembler;
     }
 
     @Override
@@ -45,11 +47,9 @@ public class CustomerApplicationServiceImpl implements CustomerApplicationServic
             eventBus.send(event);
         });
         //log
-        customerRepository.create(customer);
+        this.customerRepository.create(customer);
 
-        CreateCustomerResponseDto createCustomerResponseDto = new CreateCustomerResponseDto();
-        createCustomerResponseDto.setAccountNumber(customer.getAccountNumbers().stream().map(accNumber -> accNumber.getValue()).collect(Collectors.toList()));
-        createCustomerResponseDto.setCustomerId(customer.getId().toString());
-        return createCustomerResponseDto;
+        return this.customerAssembler.mapTo(customer);
+
     }
 }

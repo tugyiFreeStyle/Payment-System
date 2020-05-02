@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class When_create_customer extends CustomerFakes {
+public class When_create_customer extends Given_customer {
 
     CreateCustomerResponseDto result;
 

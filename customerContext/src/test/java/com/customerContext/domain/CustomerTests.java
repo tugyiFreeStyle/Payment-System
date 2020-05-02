@@ -39,9 +39,6 @@ public class CustomerTests {
 
         CustomerPolicy fakePolicy = Mockito.mock(CustomerPolicy.class);
 
-//        Mockito.doNothing().when(fakePolicy).apply(fakeID);
-//        Mockito.doNothing().when(fakePolicy).apply(fakeMoney);
-
         Mockito.when(fakePolicy.calculate(fakeMoney)).thenReturn(new InterestRate(1));
 
         // Act
@@ -66,8 +63,6 @@ public class CustomerTests {
         Money fakeMoney = new Money(money);
         CustomerPolicy fakePolicy = Mockito.mock(CustomerPolicy.class);
 
-//        Mockito.doNothing().when(fakePolicy).apply(fakeID);
-//        Mockito.doNothing().when(fakePolicy).apply(fakeMoney);
 
         Mockito.doThrow(new InitialDepositCannotBelowAHundred(money)).when(fakePolicy).apply(fakeMoney);
 

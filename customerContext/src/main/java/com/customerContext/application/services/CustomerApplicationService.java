@@ -1,7 +1,7 @@
 package com.customerContext.application.services;
 
-import com.customerContext.application.dtos.CreateCustomerResponseDto;
 import com.customerContext.application.dtos.CreateCustomerRequestDto;
+import com.customerContext.application.dtos.CreateCustomerResponseDto;
 
 public interface CustomerApplicationService {
 

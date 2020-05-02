@@ -10,13 +10,13 @@ import org.mockito.Mockito;
 
 import static org.mockito.ArgumentMatchers.any;
 
-public abstract class CustomerFakes {
+public abstract class Given_customer {
     CustomerPolicy fakePolicy;
     CustomerRepository fakeRep;
     Money fakeMoney;
     CreateCustomerRequestDto dto;
     CustomerApplicationServiceImpl customerApplicationService;
-    public CustomerFakes(){
+    public Given_customer(){
 
         this.fakePolicy = Mockito.mock(CustomerPolicy.class);
         this.fakeRep = Mockito.mock(CustomerRepository.class);

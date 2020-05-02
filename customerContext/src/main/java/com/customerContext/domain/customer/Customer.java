@@ -1,6 +1,7 @@
 package com.customerContext.domain.customer;
 
 
+import com.customerContext.domain.customer.events.AccountCreatedEvent;
 import com.customerContext.domain.shared.AggregateRoot;
 import lombok.Getter;
 
