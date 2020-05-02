@@ -8,6 +8,6 @@ public class NoEmailService implements EmailService {
 
     @Override
     public void sendEmail(String email) {
-        //
+        //send
     }
 }

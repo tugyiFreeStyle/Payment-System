@@ -19,13 +19,10 @@ public class AccountCreatedEventListener {
 
     @StreamListener(target = Sink.INPUT)
     public void reciveMessage(String msg) throws Exception {
-        //hata
 
-        throw new Exception("error occured!");
+        System.out.println("Messsage recieved  " + msg);
 
-      //  System.out.println("Messsage recieved  " + msg);
-
-        //rabitmq dan consume edilir
-        //emailService.sendEmail();
+       // rabitmq dan consume edilir
+        emailService.sendEmail(msg);
     }
 }
